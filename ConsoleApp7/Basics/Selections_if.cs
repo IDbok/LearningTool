@@ -8,10 +8,23 @@ namespace LearningTool.Basics
 {
     public class Selections_if : MainClass
     {
-        public override void Execute(bool x) 
+        public override void Execute(string someString) 
         {
-            if (x) { Console.WriteLine("is true"); }
-            else { Console.WriteLine("is false"); }
+            bool x;
+            bool.TryParse(someString, out x);
+
+            if (x == true) 
+            {
+                Console.WriteLine("is true"); 
+            }
+            else if ((Boolean)(Object)x == false) 
+            {
+                Console.WriteLine("not true");
+            }
+            //else // Такой вариант исключён условием для входного параметра
+            //{
+            //    Console.WriteLine("Введено некорректное значение"); 
+            //}
         }
     }
 }
