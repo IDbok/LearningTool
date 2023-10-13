@@ -17,7 +17,20 @@ namespace ConsoleApp7
             //    new Selections_if().Execute("false");
             ////
             // Task_1
-                new LeapYear().Execute();
+            //new LeapYear().Execute();
+            ////
+            //// "switch" statement
+            //new Selections_swich().Execute(3.ToString());
+            ////
+            //// ternary operator 
+            //new Selections_if().PassWordCheck("parol");
+            ////
+            //// "while" Loop
+            //Console.Write("Введите логин: ");
+            //new Loops_while().Execute(Console.ReadLine());
+            //// "DoWhile" Loop
+            //new Loops_while().ExecuteDoWhole();
+
 
 
 

@@ -17,7 +17,7 @@ namespace LearningTool.Basics
             {
                 Console.WriteLine("is true"); 
             }
-            else if ((Boolean)(Object)x == false) 
+            else if (x == false) 
             {
                 Console.WriteLine("not true");
             }
@@ -25,6 +25,20 @@ namespace LearningTool.Basics
             //{
             //    Console.WriteLine("Введено некорректное значение"); 
             //}
+        }
+
+        // Тернарный опратор "?:" (т.к. работает с тремя операндами)
+        public bool PassWordCheck(string storedPassword) 
+        {
+
+            Console.Write("Введите пароль: ");
+            string password = Console.ReadLine();
+            bool passCheck = password == storedPassword ? true : false;
+            string output = !passCheck ? "Вы ввели неправильный пароль": "Добро пожаловать";
+            Console.WriteLine(output);
+            
+            return passCheck;
+            
         }
     }
 }
