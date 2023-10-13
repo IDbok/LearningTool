@@ -30,7 +30,9 @@ namespace ConsoleApp7
             //new Loops_while().Execute(Console.ReadLine());
             //// "DoWhile" Loop
             //new Loops_while().ExecuteDoWhole();
-
+            //
+            // for loop
+            new Loops_for().Execute("");
 
 
 
