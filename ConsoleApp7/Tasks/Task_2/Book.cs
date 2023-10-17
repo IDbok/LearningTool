@@ -9,7 +9,14 @@ namespace LearningTool.Tasks.Task_2
     internal class Book
     {
         public Book() { }
-        public Book(string title, string author, int releaseYear, string description = null, int pageAmount = 0)
+        public Book(string title, string author, int releaseYear)
+        {
+            _title = title;
+            _author = author;
+            _releaseYear = releaseYear;
+            
+        }
+        public Book(string title, string author, int releaseYear, string description, int pageAmount)
         {
             //_id = Guid.NewGuid();
             _title = title;
@@ -26,7 +33,8 @@ namespace LearningTool.Tasks.Task_2
         private int _releaseYear;
         private string? _description;
         private int _pageAmount;
-        List<int> _rates = new List<int>(); 
+        
+        private List<int> _rates = new List<int>(); 
         //private string[] _formats;
 
         public void RateBook(int rate) 
@@ -50,6 +58,7 @@ namespace LearningTool.Tasks.Task_2
                 $"\nКоличество страниц: {(_pageAmount == 0 ? "#Н/Д": _pageAmount)}"+
                 $"\nОписание: {(_description == null ? "#Н/Д" : _description)}"+
                 $"\nСредняя оценка: {(value == 0 ? "Нет ни одной оценки" : score)}";
+
             Console.WriteLine(message);
         }
 
