@@ -8,6 +8,7 @@ namespace LearningTool.Basics
 {
     internal class Loops_for : MainClass
     {
+
         public override void Execute(string x)
         {
             for (int i = 0; i < 3; i++)
