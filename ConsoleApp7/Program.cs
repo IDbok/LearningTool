@@ -44,22 +44,27 @@ namespace ConsoleApp7
             //Console.WriteLine(cl.y);
             //Console.WriteLine(cl.x);
 
-            Book book1 = new Book("Harry Potter and the Chamber of Secrets", "J.C. Rowling",1998,"will be later",372);
-            book1.PrintDetails();
+            Author author1 = new Author("J.C.", "Rowling","31.07.1965");
+            DateTime date = new DateTime();
 
-            Console.WriteLine("\n");
+            //Book book1 = new Book("Harry Potter and the Chamber of Secrets", "J.C. Rowling",1998,"will be later",372);
+            //book1.PrintDetails();
 
-            Book book2 = new Book("Harry Potter and the Methods of Rationality","Elizer Yudkowsky",2010);
-            book2.RateBook(5);
-            book2.RateBook(1);
-            book2.RateBook(5);
-            book2.RateBook(5);
-            book2.RateBook(5);
-            book2.RateBook(5);
-            book2.RateBook(5);
+            //Console.WriteLine("\n");
 
-            book2.PrintDetails();
+            //Book book2 = new Book("Harry Potter and the Methods of Rationality","Elizer Yudkowsky",2010);
+            
+            //book2.RateBook(5);
+            //book2.RateBook(1);
+            //book2.RateBook(5);
+            //book2.RateBook(5);
+            //book2.RateBook(5);
+            //book2.RateBook(5);
+            //book2.RateBook(5);
 
+            //book2.PrintDetails();
+
+            
         }
     }
 

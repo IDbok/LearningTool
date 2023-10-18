@@ -12,15 +12,26 @@ namespace LearningTool.Tasks.Task_2
         public Book(string title, string author, int releaseYear)
         {
             _title = title;
-            _author = author;
+            _authors.Add(author);
             _releaseYear = releaseYear;
-            
+
         }
         public Book(string title, string author, int releaseYear, string description, int pageAmount)
         {
             //_id = Guid.NewGuid();
             _title = title;
-            _author = author;
+            _authors.Add(author);
+            _releaseYear = releaseYear;
+            _description = description;
+            _pageAmount = pageAmount;
+            //_formats;
+        }
+
+        public Book(string title, List<string> author, int releaseYear, string description, int pageAmount)
+        {
+            //_id = Guid.NewGuid();
+            _title = title;
+            _authors = author;
             _releaseYear = releaseYear;
             _description = description;
             _pageAmount = pageAmount;
@@ -29,11 +40,11 @@ namespace LearningTool.Tasks.Task_2
 
         private Guid _id = Guid.NewGuid();
         private string _title;
-        private string _author;
+        public List<string> _authors = new List<string>();
         private int _releaseYear;
         private string? _description;
         private int _pageAmount;
-        
+
         private List<int> _rates = new List<int>(); 
         //private string[] _formats;
 
@@ -49,11 +60,12 @@ namespace LearningTool.Tasks.Task_2
             //var pageAm = _pageAmount == 0 ? "нет данных": _pageAmount; 
             int value = _rates.Count;
             double score = Math.Round((double)_rates.Sum() / value, 1);
+
             
             string message = 
                 $"Книга с идетификатором: {_id}\n"+
                 $"Название книги:{_title}"+
-                $"\nАвтор: {_author}"+
+                $"\nАвтор: {_authors.ToString}"+
                 $"\nДата издания: {_releaseYear}"+
                 $"\nКоличество страниц: {(_pageAmount == 0 ? "#Н/Д": _pageAmount)}"+
                 $"\nОписание: {(_description == null ? "#Н/Д" : _description)}"+
