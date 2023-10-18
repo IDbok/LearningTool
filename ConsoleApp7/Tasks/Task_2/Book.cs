@@ -9,14 +9,14 @@ namespace LearningTool.Tasks.Task_2
     internal class Book
     {
         public Book() { }
-        public Book(string title, string author, int releaseYear)
+        public Book(string title, Author author, int releaseYear)
         {
             _title = title;
             _authors.Add(author);
             _releaseYear = releaseYear;
 
         }
-        public Book(string title, string author, int releaseYear, string description, int pageAmount)
+        public Book(string title, Author author, int releaseYear, string description, int pageAmount)
         {
             //_id = Guid.NewGuid();
             _title = title;
@@ -27,7 +27,7 @@ namespace LearningTool.Tasks.Task_2
             //_formats;
         }
 
-        public Book(string title, List<string> author, int releaseYear, string description, int pageAmount)
+        public Book(string title, List<Author> author, int releaseYear, string description, int pageAmount)
         {
             //_id = Guid.NewGuid();
             _title = title;
@@ -40,13 +40,19 @@ namespace LearningTool.Tasks.Task_2
 
         private Guid _id = Guid.NewGuid();
         private string _title;
-        public List<string> _authors = new List<string>();
+        public List<Author> _authors = new List<Author>();
         private int _releaseYear;
         private string? _description;
         private int _pageAmount;
 
-        private List<int> _rates = new List<int>(); 
+        private List<int> _rates = new List<int>();
         //private string[] _formats;
+
+        private void AddBookAuthor() { }
+        public string GetTitle() 
+        {
+            return _title;
+        }
 
         public void RateBook(int rate) 
         {

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using static System.Formats.Asn1.AsnWriter;
 using static System.Reflection.Metadata.BlobBuilder;
@@ -50,22 +51,39 @@ namespace LearningTool.Tasks.Task_2
 
         public override string ToString()
         {
+            string listBooks = "";// string.Empty;
+            bool isEmptyBooks = _books.Count == 0;
+
             string message =
                 $"Автор: {_name} {_surname}"
                 + $"\nДата рождения: {_dateBirth}"
-                + ((_dateDeath == "Н/Д") ? $"\nДата смерти: {_dateDeath}" : "")
-                
                 ;
+
+            if (!isEmptyBooks)
+            {
+                foreach (Book book in _books)
+                {
+                    listBooks += book != _books.Last() ? book.GetTitle() : book.GetTitle() + ", ";
+
+                }
+                message += $"Книги: " + listBooks;
+            }
             
             return message;
         }
 
-        private (bool,DateTime) IsItDateTime(string dateString) 
+        public bool IsItDateInFormat(string dateString) 
         {
+
             //string dateString = "02/10/2023 14:30:00"; // Пример строки даты
+            string pattern = @"^\d{2}\.\d{2}\.\d{4}$";
+            bool result = Regex.IsMatch(dateString, pattern);
+            // 
             //string format = "dd.MM.yyyy"; // Формат даты соответствующий строке
-            bool result = DateTime.TryParse(dateString,out DateTime date);
-            return (result,date); 
+            //bool result = DateTime.TryParse(dateString,out DateTime date);
+            
+            
+            return result; 
         }
     }
 }
