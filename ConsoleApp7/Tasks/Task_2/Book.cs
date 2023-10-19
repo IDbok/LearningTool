@@ -9,29 +9,29 @@ namespace LearningTool.Tasks.Task_2
     internal class Book
     {
         public Book() { }
-        public Book(string title, Author author, int releaseYear)
+        public Book(string title, string author, int releaseYear)
         {
             _title = title;
-            _authors.Add(author);
+            _author = author;
             _releaseYear = releaseYear;
 
         }
-        public Book(string title, Author author, int releaseYear, string description, int pageAmount)
+        public Book(string title, string author, int releaseYear, string description, int pageAmount)
         {
             //_id = Guid.NewGuid();
             _title = title;
-            _authors.Add(author);
+            _author = author;
             _releaseYear = releaseYear;
             _description = description;
             _pageAmount = pageAmount;
             //_formats;
         }
 
-        public Book(string title, List<Author> author, int releaseYear, string description, int pageAmount)
+        public Book(string title, Author author, int releaseYear, string description, int pageAmount)
         {
             //_id = Guid.NewGuid();
             _title = title;
-            _authors = author;
+            _author = author.GetName(); // Можно ли так делать??
             _releaseYear = releaseYear;
             _description = description;
             _pageAmount = pageAmount;
@@ -40,7 +40,7 @@ namespace LearningTool.Tasks.Task_2
 
         private Guid _id = Guid.NewGuid();
         private string _title;
-        public List<Author> _authors = new List<Author>();
+        public string _author;
         private int _releaseYear;
         private string? _description;
         private int _pageAmount;
@@ -60,7 +60,7 @@ namespace LearningTool.Tasks.Task_2
 
         }
 
-        public void PrintDetails() // вместо toString() тк он похож на метод ToString класс oblect 
+        public override string ToString() // вместо toString() тк он похож на метод ToString класс oblect 
                                    // + начинается с маленькой буквы
         {
             //var pageAm = _pageAmount == 0 ? "нет данных": _pageAmount; 
@@ -71,13 +71,13 @@ namespace LearningTool.Tasks.Task_2
             string message = 
                 $"Книга с идетификатором: {_id}\n"+
                 $"Название книги:{_title}"+
-                $"\nАвтор: {_authors.ToString}"+
+                $"\nАвтор: {_author}"+
                 $"\nДата издания: {_releaseYear}"+
                 $"\nКоличество страниц: {(_pageAmount == 0 ? "#Н/Д": _pageAmount)}"+
                 $"\nОписание: {(_description == null ? "#Н/Д" : _description)}"+
                 $"\nСредняя оценка: {(value == 0 ? "Нет ни одной оценки" : score)}";
 
-            Console.WriteLine(message);
+            return message;
         }
 
     }

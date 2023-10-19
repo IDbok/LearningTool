@@ -72,6 +72,8 @@ namespace LearningTool.Tasks.Task_2
             return message;
         }
 
+        public string GetName() { return _name + " " + _surname; }
+
         public bool IsItDateInFormat(string dateString) 
         {
 
