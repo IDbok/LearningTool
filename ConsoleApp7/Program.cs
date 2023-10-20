@@ -86,25 +86,35 @@ namespace ConsoleApp7
             string endWord = "end";
             string input;
 
-            //ProductCatalod(productList, priceList, itemList);
+            ProductCatalod(productList, priceList, itemList);
 
-            //do
-            //{
-            //    Console.WriteLine($"Введите номер и ко-во товара через пробел (введите \"{endWord}\" чтобы закончить):");
-            //    input = Console.ReadLine();
-
-            //    Console.WriteLine(input);
-            //} while (input != endWord);
-
-            //string input2;
             do
             {
                 Console.WriteLine($"Введите номер и ко-во товара через пробел (введите \"{endWord}\" чтобы закончить):");
                 input = Console.ReadLine();
-                int input2 = ParseInput(input)[1];
-                AddToCart(productList[int.Parse(input)], priceList[int.Parse(input)], int.Parse(input2));
-                Console.WriteLine("Был добавлен: " + ShowLastCartItem());
+                int[] inputList = ParseInput(input);
+                bool isInProduct = productList.Length > inputList[0];
+
+                if (inputList[2] == 1 && isInProduct)
+                {
+                    AddToCart(productList[inputList[0]], priceList[inputList[0]], inputList[1]);
+                    Console.WriteLine("Был добавлен: " + ShowLastCartItem());
+                }
+                else if (input != endWord) { Console.WriteLine("Некорректный ввод, повторите попытку"); }
+
             } while (input != endWord);
+
+            //Console.WriteLine($"Итоговая сумма заказа: {tatalPriceCart} руб");
+            ShowCart();
+            Console.ReadLine();
+
+            //do
+            //{
+            //    input = Console.ReadLine();
+            //    Console.WriteLine(ParseInput(input)[2]);
+
+            //}
+            //while (input != "end");
 
         }
 
@@ -117,25 +127,45 @@ namespace ConsoleApp7
         static int cartItem = 0;
         public static void AddToCart(string product, double price, int count)
         {
+            // TODO - проверить наличие в карзины продукта
+
             productCartList[cartItem] = product;
             priceCartList[cartItem] = price;
             amountCartList[cartItem] = count;
-            totalPriceCartList[cartItem] = price*count;
+            totalPriceCartList[cartItem] = price * count;
             tatalPriceCart += totalPriceCartList[cartItem];
             cartItem++;
         }
-        public static (int, int) ParseInput(string input) 
+        public static int IsInCart(string x)
         {
-            string[] parse = input.Split(' ');
-            int numProduct = int.Parse(parse[0]);
-            int amountProduct = int.Parse(parse[1]);
+            int result = -1;
+            if (productCartList.Contains(x)) { result = productCartList.IndexOf(x)}
 
-            return (numProduct,amountProduct);
+            return result;
+        }
+        public static int[] ParseInput(string input)
+        {
+
+            string[] parse = input.Split(' ');
+            int[] output = { 0, 0, -1 };
+            bool parseOK = false;
+            if (parse.Length == 2)
+            {
+
+                bool firstTry = int.TryParse(parse[0], out output[0]);
+                bool secondTry = int.TryParse(parse[1], out output[1]);
+
+                if (firstTry && secondTry)
+                {
+                    output[2] = 1;
+                }
+            }
+            return output;
         }
 
-        public static string ShowLastCartItem() 
+        public static string ShowLastCartItem()
         {
-            return productCartList[cartItem-1] + " " + amountCartList[cartItem - 1];
+            return productCartList[cartItem - 1] + " " + amountCartList[cartItem - 1];
         }
         public static void ProductCatalod(string[] productList, double[] priceList, string[] itemList)
         {
@@ -147,6 +177,20 @@ namespace ConsoleApp7
             {
                 Console.WriteLine($"{i,5} {productList[i],-16} {priceList[i],-4} {itemList[i],-5}");
             }
+        }
+        public static void ShowCart()//string[] productCartList, double[] priceCartList, int[] amountCartList, double[] totalPriceCartList) 
+        {
+            Console.WriteLine("Состав корзины:");
+            Console.WriteLine("Товар           Стоимость   Кол-во  Сумма");
+            for (int i = 0; i < productCartList.Length; i++) 
+            {
+                if (priceCartList[i]==0)
+                { 
+                    break; 
+                }
+                Console.WriteLine($"{productCartList[i],-16} {priceCartList[i],-12} {amountCartList[i],-9} {totalPriceCartList[i],-5}");
+            }
+            Console.WriteLine($"Всего: {tatalPriceCart, 37}");
         }
     }
 
