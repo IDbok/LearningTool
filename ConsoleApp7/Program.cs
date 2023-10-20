@@ -79,12 +79,12 @@ namespace ConsoleApp7
 
             //new Loops_foreach().Execute();
 
-            //string[] productList = { "Молоко", "Сыр", "Йогурт", "Масло", "Айран" };
-            //double[] priceList = { 100, 400, 80, 160, 100 };
-            //string[] itemList = { "руб/шт", "руб/шт", "руб/шт", "руб/шт", "руб/шт" };
+            string[] productList = { "Молоко", "Сыр", "Йогурт", "Масло", "Айран" };
+            double[] priceList = { 100, 400, 80, 160, 100 };
+            string[] itemList = { "руб/шт", "руб/шт", "руб/шт", "руб/шт", "руб/шт" };
 
-            //string endWord = "end";
-            //string input;
+            string endWord = "end";
+            string input;
 
             //ProductCatalod(productList, priceList, itemList);
 
@@ -96,7 +96,15 @@ namespace ConsoleApp7
             //    Console.WriteLine(input);
             //} while (input != endWord);
 
-
+            //string input2;
+            do
+            {
+                Console.WriteLine($"Введите номер и ко-во товара через пробел (введите \"{endWord}\" чтобы закончить):");
+                input = Console.ReadLine();
+                int input2 = ParseInput(input)[1];
+                AddToCart(productList[int.Parse(input)], priceList[int.Parse(input)], int.Parse(input2));
+                Console.WriteLine("Был добавлен: " + ShowLastCartItem());
+            } while (input != endWord);
 
         }
 
@@ -115,6 +123,19 @@ namespace ConsoleApp7
             totalPriceCartList[cartItem] = price*count;
             tatalPriceCart += totalPriceCartList[cartItem];
             cartItem++;
+        }
+        public static (int, int) ParseInput(string input) 
+        {
+            string[] parse = input.Split(' ');
+            int numProduct = int.Parse(parse[0]);
+            int amountProduct = int.Parse(parse[1]);
+
+            return (numProduct,amountProduct);
+        }
+
+        public static string ShowLastCartItem() 
+        {
+            return productCartList[cartItem-1] + " " + amountCartList[cartItem - 1];
         }
         public static void ProductCatalod(string[] productList, double[] priceList, string[] itemList)
         {

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace LearningTool.Tasks.Task_3
 {
-    internal class Cart
+    internal class Cart : Shop
     {
 
         public static void ProductCatalod(string[] productList, double[] priceList, string[] itemList)
