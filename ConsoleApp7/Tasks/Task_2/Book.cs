@@ -40,7 +40,7 @@ namespace LearningTool.Tasks.Task_2
 
         private Guid _id = Guid.NewGuid();
         private string _title;
-        public string _author;
+        private string _author;
         private int _releaseYear;
         private string? _description;
         private int _pageAmount;
@@ -48,7 +48,6 @@ namespace LearningTool.Tasks.Task_2
         private List<int> _rates = new List<int>();
         //private string[] _formats;
 
-        private void AddBookAuthor() { }
         public string GetTitle() 
         {
             return _title;

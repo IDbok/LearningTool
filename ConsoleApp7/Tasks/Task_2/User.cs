@@ -21,6 +21,7 @@ namespace LearningTool.Tasks.Task_2
             _email = email;
             _book = book.GetTitle();
             _author = author.GetName();
+
             userCount++;
         }
 
