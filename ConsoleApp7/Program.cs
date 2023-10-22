@@ -10,6 +10,7 @@ namespace ConsoleApp7
     {
         static void Main(string[] args)
         {
+
             //// "if" statement
             ////Создаём новый объект
             //Selections_if start_programm = new Selections_if();
