@@ -79,6 +79,7 @@ namespace ConsoleApp7
 
             //new Loops_foreach().Execute();
 
+
             string[] productList = { "Молоко", "Сыр", "Йогурт", "Масло", "Айран" };
             double[] priceList = { 100, 400, 80, 160, 100 };
             string[] itemList = { "руб/шт", "руб/шт", "руб/шт", "руб/шт", "руб/шт" };
@@ -104,17 +105,9 @@ namespace ConsoleApp7
 
             } while (input != endWord);
 
-            //Console.WriteLine($"Итоговая сумма заказа: {tatalPriceCart} руб");
             ShowCart();
             Console.ReadLine();
 
-            //do
-            //{
-            //    input = Console.ReadLine();
-            //    Console.WriteLine(ParseInput(input)[2]);
-
-            //}
-            //while (input != "end");
 
         }
 
@@ -136,19 +129,19 @@ namespace ConsoleApp7
             tatalPriceCart += totalPriceCartList[cartItem];
             cartItem++;
         }
-        public static int IsInCart(string x)
-        {
-            int result = -1;
-            if (productCartList.Contains(x)) { result = productCartList.IndexOf(x)}
+        //public static int IsInCart(string x)
+        //{
+        //    int result = -1;
+        //    if (productCartList.Contains(x)) { result = productCartList.IndexOf(x)}
 
-            return result;
-        }
+        //    return result;
+        //}
         public static int[] ParseInput(string input)
         {
 
             string[] parse = input.Split(' ');
             int[] output = { 0, 0, -1 };
-            bool parseOK = false;
+            //bool parseOK = false;
             if (parse.Length == 2)
             {
 
