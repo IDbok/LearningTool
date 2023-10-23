@@ -10,8 +10,9 @@ namespace ConsoleApp7
             string[] productList = { "Молоко", "Сыр", "Йогурт", "Масло", "Айран", "Матцони" };
             double[] priceList = { 100, 400, 80, 160, 100, 120 };
             
-            Shop newShop = new Shop(productList, priceList, "yohoo");
+            Shop newShop = new Shop(productList, priceList, "x");
 
+            Shop nextnewShop = new Shop(productList, priceList, "x");
         }
 
     }

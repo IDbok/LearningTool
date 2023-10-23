@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 namespace LearningTool.Tasks.Task_3
 {
     public class Cart
@@ -15,14 +10,10 @@ namespace LearningTool.Tasks.Task_3
         double tatalPriceCart = 0;
         int cartItem = 0;
         
-        public Cart() 
-        {
-
-        }
         
         public void AddPtoduct(string product, double price, int count)
         {
-            // TODO - проверить наличие в карзины продукта
+            // TODO - проверить наличие в корзины продукта
 
             productCartList[cartItem] = product;
             priceCartList[cartItem] = price;
