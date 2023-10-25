@@ -1,5 +1,4 @@
 ﻿using Weapons;
-using System;
 
 namespace LearningTool
 {
@@ -11,7 +10,9 @@ namespace LearningTool
             weaponSlots = new Weapon[]
             {
                 new BigGun()
-                 
+                , new Pistiol()
+                , new Rifle()
+                , new WaterGun()
             };
         }
         public int getShotsCount() => weaponSlots.Length;

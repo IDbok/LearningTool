@@ -1,6 +1,4 @@
-﻿
-
-using LearningTool;
+﻿using LearningTool;
 
 namespace ConsoleApp7
 {
